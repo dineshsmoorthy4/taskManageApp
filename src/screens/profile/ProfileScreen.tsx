@@ -5,11 +5,9 @@ import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { logout } from '../../store/authSlice';
 import { toggleTheme } from '../../store/themeSlice';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import { useThemeToggle } from '../../hooks/useTheme';
 
 const ProfileScreen = () => {
   const theme = useTheme();
-  // const { isDarkMode, isSystemTheme, toggleTheme, toggleSystemTheme } = useThemeToggle();
   const dispatch = useAppDispatch();
   const user = useAppSelector(state => state.auth.user);
   const isDarkMode = useAppSelector(state => state.theme.isDarkMode);
@@ -18,11 +16,6 @@ const ProfileScreen = () => {
   const handleLogout = () => {
     dispatch(logout());
   };
-
-  // Create proper handlers for the Switch components
-  // const handleSystemThemeToggle = (value: boolean) => {
-  //   toggleSystemTheme();
-  // };
 
   const handleDarkModeToggle = () => {
     const newMode = !localDarkMode;
@@ -41,7 +34,8 @@ const ProfileScreen = () => {
           label={
             user?.name
               ?.split(' ')
-              .map(n => n[0])
+              .slice(0, 2) 
+              .map(n => n[0].toUpperCase()) 
               .join('') || 'U'
           }
           style={[styles.avatar, { backgroundColor: theme.colors.primary }]}
