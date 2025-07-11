@@ -1,92 +1,180 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Task Management App
 
-# Getting Started
+The Task Management App is a comprehensive productivity solution built with React Native that helps users organize their daily tasks efficiently. Designed with a clean, intuitive interface, this application allows users to create, track, and manage their to-do items with ease while offering a personalized experience through customizable themes.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## Features
 
-## Step 1: Start Metro
+1. User Authentication System
+   
+- Secure Login/Signup: Email and password-based authentication with form validation
+- Session Management: JWT token storage using AsyncStorage for persistent sessions
+- Protected Routes: Automatic redirection to login for unauthorized access
+- Logout Functionality: Secure session termination
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+2. Comprehensive Task Management
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+- Task Creation: Add tasks with title, description, and due date
+- Task Organization: View all tasks in a scrollable list
+- Task Modification: Edit existing tasks or mark as complete
+- Task Deletion: Remove tasks with confirmation
+- Form Validation: Ensures all required fields are properly filled
 
-```sh
-# Using npm
-npm start
+3. Personalized User Experience
 
-# OR using Yarn
-yarn start
+- User Profile: View account information and preferences
+- Theme Customization: Toggle between light and dark modes
+- System Theme Detection: Optional automatic theme switching based on device settings
+- Visual Feedback: Immediate UI updates when changing preferences
+
+4. Technical Implementation
+
+- State Management: Redux Toolkit for efficient global state handling
+- Navigation: React Navigation with stack and tab navigators
+- UI Components: React Native Paper with Material Design 3 styling
+- Form Handling: Formik with Yup validation
+- Persistence: AsyncStorage for offline data access
+- Type Safety: Comprehensive TypeScript integration
+
+## Prerequisites
+
+- Node.js (v16 or higher)
+- npm or yarn
+- React Native CLI
+- Xcode (for iOS development)
+- Android Studio (for Android development)
+
+## Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/dineshsmoorthy4/taskManageApp.git
+   cd taskManageApp
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+3. For iOS, install pods:
+   ```bash
+   cd ios && pod install && cd ..
+   ```
+
+4. Run the application:
+   
+   For iOS:
+   ```bash
+   npx react-native run-ios
+   ```
+   
+   For Android:
+   ```bash
+   npx react-native run-android
+   ```
+
+## Project Structure
+
+```
+weather-app/
+├── src/
+│   ├── assets/
+│   ├── components/
+│   │   ├── common/
+│   │   │   ├── customStatusBar.tsx
+│   │   │   └── ProtectedRoute.tsx
+│   ├── hooks/
+│   │   └── useTheme.ts
+│   ├── navigation/
+│   │   ├── AuthNavigator.tsx
+│   │   └── MainNavigator.tsx
+|   |   └── RootNavigator.tsx
+│   ├── screens/
+│   │   ├── auth/
+│   │   │   ├── LoginScreen.tsx
+│   │   │   └── SignUpScreen.tsx
+│   │   ├── profile/
+│   │   │   ├── ProfileScreen.tsx
+│   │   ├── support/
+│   │   │   ├── SupportScreen.tsx
+│   │   ├── tasks/
+│   │   │   ├── AddTaskScreen.tsx
+│   │   │   └── EditTaskScreen.tsx
+│   │   │   └── TaskListScreen.tsx
+│   ├── store/
+│   │   ├── authSlice.ts
+│   │   └── hooks.ts
+│   │   └── store.ts
+│   │   └── taskSlice.ts
+│   │   └── themeSlice.ts
+│   ├── types/
+│   │   └── index.ts
+│   │   └── navigation.ts
+│   │   └── theme.ts
+│   ├── utils/
+│   │   ├── themeUtils.ts
+├── App.tsx
+├── .env
+├── app.json
+├── index.js
+├── babel.config.js
+├── jest.config.js
+├── metro.config.js
+├── package.json
+├── tsconfig.json
+└── README.md
 ```
 
-## Step 2: Build and run your app
+### State Management
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+- Auth Slice: Handles user authentication state and credentials
+- Tasks Slice: Manages task creation, updates, and deletion
+- Theme Slice: Controls application theme preferences
+- Persisted State: Critical data stored in AsyncStorage
 
-### Android
+### Development Approach
 
-```sh
-# Using npm
-npm run android
+- Component-Based Architecture: Built with reusable, modular components
+- Type Safety: Comprehensive TypeScript integration throughout
+- Performance Optimization: Memoization and efficient state updates
+- Responsive Design: Adapts to various screen sizes and orientations
+- Accessibility: Proper contrast ratios and touch targets
 
-# OR using Yarn
-yarn android
-```
+### TypeScript Implementation
 
-### iOS
+- Used TypeScript for all components and services to ensure type safety and better developer experience
+- Created dedicated type definitions for API responses, component props, and context states
+- Properly typed React Context providers and consumers
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+### Theme Support
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+- Created a fully typed ThemeContext for managing dark/light mode preferences
+- Used AsyncStorage to persist theme settings
+- Applied type-safe theme styles throughout the app
 
-```sh
-bundle install
-```
+### AsyncStorage
 
-Then, and every time you update your native dependencies, run:
+- Used AsyncStorage with TypeScript for type-safe data persistence
+- Implemented proper error handling for async operations
 
-```sh
-bundle exec pod install
-```
+### Quality Assurance
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+- Code Quality: ESLint and Prettier for consistent formatting
+- Type Checking: Strict TypeScript configuration
+- Testing: Unit tests for critical functionality
+- User Experience: Intuitive navigation and clear feedback
 
-```sh
-# Using npm
-npm run ios
+## Benefits of TypeScript
 
-# OR using Yarn
-yarn ios
-```
+- **Type Safety**: Catches common errors during development rather than at runtime
+- **Improved IDE Support**: Better autocompletion, type checking, and refactoring capabilities
+- **Self-Documenting Code**: Types serve as documentation for component props and function parameters
+- **Easier Maintenance**: Type definitions make it easier to understand and refactor code
+- **Better Team Collaboration**: Clear interfaces between components and modules
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
-
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
-
-## Step 3: Modify your app
-
-Now that you have successfully run the app, let's make changes!
-
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
-
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
+## Learn More
 
 To learn more about React Native, take a look at the following resources:
 
@@ -95,3 +183,9 @@ To learn more about React Native, take a look at the following resources:
 - [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
 - [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
 - [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+
+
+## License
+This project is licensed under the MIT © 2025 License.
+
+## Developed with ❤️ by [Dinesh.Smoorthy](https://www.dineshsmoorthy.com)
