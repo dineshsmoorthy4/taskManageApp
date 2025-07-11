@@ -174,6 +174,10 @@ weather-app/
 - **Easier Maintenance**: Type definitions make it easier to understand and refactor code
 - **Better Team Collaboration**: Clear interfaces between components and modules
 
+### Android APK link to download for device
+
+[taskManageApp](https://www.upload-apk.com/pcjSCyUWz48fFUL)
+
 ## Learn More
 
 To learn more about React Native, take a look at the following resources:
